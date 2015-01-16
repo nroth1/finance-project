@@ -76,34 +76,34 @@ public class FeederFactory {
      * Initialize all feeders
      */
     protected static void initAllFeeders() {
-        _fileFeeder = initFileFeeder();
-        _jsonFeeder = initJsonFeeder();
+        // _fileFeeder = initFileFeeder();
+        // _jsonFeeder = initJsonFeeder();
         _currencyExchangeFeeder = initCurrencyExchangeFeeder();
     }
 
-    /**
-     * Initialize the File Feeder
-     * 
-     * @return a new File Feeder
-     */
-    protected static IFeeder initFileFeeder() {
-        return new FileFeeder();
-    }
-
-    /**
-     * Initialize a Json Feeder
-     * 
-     * @return A new Json Feeder
-     */
-    protected static IFeeder initJsonFeeder() {
-        // TODO: Put in Spring
-        final String urlString = "https://finance.google.com/finance/info?client=ig&q=NASDAQ%3a";
-        final String userAgent = "Mozilla/5.0";
-        final String feederName = "Json HTTP Request";
-        final String fileToReadFrom = "All-NYSE-Symbols.txt";
-
-        return new FullPositionFeeder(urlString, userAgent, feederName, fileToReadFrom);
-    }
+    // /**
+    // * Initialize the File Feeder
+    // *
+    // * @return a new File Feeder
+    // */
+    // protected static IFeeder initFileFeeder() {
+    // return new FileFeeder();
+    // }
+    //
+    // /**
+    // * Initialize a Json Feeder
+    // *
+    // * @return A new Json Feeder
+    // */
+    // protected static IFeeder initJsonFeeder() {
+    // // TODO: Put in Spring
+    // final String urlString = "https://finance.google.com/finance/info?client=ig&q=NASDAQ%3a";
+    // final String userAgent = "Mozilla/5.0";
+    // final String feederName = "Json HTTP Request";
+    // final String fileToReadFrom = "All-NYSE-Symbols.txt";
+    //
+    // return new FullPositionFeeder(urlString, userAgent, feederName, fileToReadFrom);
+    // }
 
     /**
      * Initialize a Currency Exchange Feeder

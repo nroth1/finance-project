@@ -110,39 +110,62 @@ public class CurrencyExchangeAnalyzer {
         Set<ExchangeRate> seenExchangeRates = new HashSet<ExchangeRate>();
         Set<ExchangeRate> exchangeRatesToAnalyze = new HashSet<ExchangeRate>();
 
-        for (ExchangeRate rateToAggregate : exchangeRatesToAggregate) {
-            if (!(seenExchangeRates.contains(rateToAggregate))) {
-                AggregatedExchangeRateAnalysis aggregation = new AggregatedExchangeRateAnalysis();
-
-                // Set the date of this exchange rate as the end date for this aggregation
-                aggregation._endDate = rateToAggregate.date;
-
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(aggregation._endDate);
-                cal.add(Calendar.HOUR, (-(7 * 24)));
-                Date startDate = cal.getTime();
-
-                // Set the start date for this aggregation
-                aggregation._startDate = startDate;
-
-                // For every exchange rate that we have loaded in memory, if it's between the start and end date of the
-                // AggregatedExchangeRateAnalysis object, then add it to a list of exchange rates that we want to
-                // analyze.
-                for (ExchangeRate exchangeRate : _exchangeRates) {
-                    if ((exchangeRate.date.compareTo(aggregation._startDate) > 0)
-                            && (exchangeRate.date.compareTo(aggregation._endDate) <= 0)) {
-                        exchangeRatesToAnalyze.add(exchangeRate);
-                        // TODO: Super messy and innefficient
-                        seenExchangeRates.add(exchangeRate);
-                    }
-                }
-
-                // Run the analysis for the exchange rates we want to analyze and store htem in the "aggregation" object
-                aggregation.runAnalysis(exchangeRatesToAnalyze);
-
-                // Add this aggregation to the list of aggregations that we will write to a file
-                aggregatedAnalyses.add(aggregation);
+        List<ExchangeRate> sortedRatesByDate = new ArrayList<ExchangeRate>(exchangeRatesToAggregate);
+        // TODO: Make this an actual class? We use it twice right now
+        Comparator<ExchangeRate> exchangeRateComparatorByDate = new Comparator<ExchangeRate>() {
+            @Override
+            public int compare(ExchangeRate ex1, ExchangeRate ex2) {
+                return ex1.date.compareTo(ex2.date);
             }
+        };
+
+        Collections.sort(sortedRatesByDate, exchangeRateComparatorByDate);
+
+        // TODO: Do this just for each day, not every object
+        // for (every day between the earliest day and the latest day)...
+        List<Date> datesBetweenEarliestAndLatest = new ArrayList<Date>();
+        Date earliestDate = sortedRatesByDate.get(0).date;
+        Date latestDate = sortedRatesByDate.get(sortedRatesByDate.size() - 1).date;
+        Date currentDate = earliestDate;
+        datesBetweenEarliestAndLatest.add(currentDate);
+        Calendar cal = Calendar.getInstance();
+        while (currentDate.compareTo(latestDate) < 0) {
+            cal.setTime(currentDate);
+            cal.add(Calendar.HOUR, 24);
+            currentDate = cal.getTime();
+            datesBetweenEarliestAndLatest.add(currentDate);
+        }
+        for (Date date : datesBetweenEarliestAndLatest) {
+            AggregatedExchangeRateAnalysis aggregation = new AggregatedExchangeRateAnalysis();
+
+            // Set the date of this exchange rate as the end date for this aggregation
+            aggregation._endDate = date;
+
+            cal.setTime(aggregation._endDate);
+            cal.add(Calendar.HOUR, (-(7 * 24)));
+            Date startDate = cal.getTime();
+
+            // Set the start date for this aggregation
+            aggregation._startDate = startDate;
+
+            // For every exchange rate that we have loaded in memory, if it's between the start and end date of the
+            // AggregatedExchangeRateAnalysis object, then add it to a list of exchange rates that we want to
+            // analyze.
+            for (ExchangeRate exchangeRate : _exchangeRates) {
+                if ((exchangeRate.date.compareTo(aggregation._startDate) > 0)
+                        && (exchangeRate.date.compareTo(aggregation._endDate) <= 0)) {
+                    exchangeRatesToAnalyze.add(exchangeRate);
+                    // TODO: Super messy and innefficient
+                    seenExchangeRates.add(exchangeRate);
+                }
+            }
+
+            // Run the analysis for the exchange rates we want to analyze and store htem in the "aggregation" object
+            aggregation.runAnalysis(exchangeRatesToAnalyze);
+
+            // Add this aggregation to the list of aggregations that we will write to a file
+            aggregatedAnalyses.add(aggregation);
+
         }
 
         writeAggregationToFile(aggregatedAnalyses);

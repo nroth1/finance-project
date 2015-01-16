@@ -28,6 +28,8 @@ import feeder.*;
  *         TODO: Make the currency feed / analysis programs more self contained so they can be built on their own and
  *         then executed from cron jobs
  * 
+ *         TODO: Set up checkstyle / autosave stuff - _field, final T argument_, etc...
+ * 
  */
 public class DCASMain {
 
@@ -45,7 +47,7 @@ public class DCASMain {
         for (IFeeder feeder : feeders) {
             feeder.feed();
         }
-        // LOGGER.info("hi");
+        // LOGGER.info("test");
         System.out.println();
         System.out.println("All feeders complete - " + (System.currentTimeMillis() - startFeeders) + " ms total");
     }
