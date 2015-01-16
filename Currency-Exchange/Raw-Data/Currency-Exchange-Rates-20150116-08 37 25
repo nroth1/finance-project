@@ -1,0 +1,54 @@
+Aggregate Exchange Rates
+--------------------------
+SYM|AGGREGATE|AVERAGE
+--------------------------
+AUD|4.827542|0.80459
+CHF|7.134484|1.189081
+EUR|7.230632|1.205105
+GBP|9.77165|1.628608
+USD|6.098412|1.016402
+CAD|4.901548|0.816925
+NZD|4.531383|0.755231
+--------------------------
+{"from":"AUD","to":"CHF","rate":0.716068,"date":"Jan 16, 2015 8:37:11 AM"}
+{"from":"AUD","to":"EUR","rate":0.708502,"date":"Jan 16, 2015 8:37:12 AM"}
+{"from":"AUD","to":"GBP","rate":0.540348,"date":"Jan 16, 2015 8:37:13 AM"}
+{"from":"AUD","to":"USD","rate":0.82074,"date":"Jan 16, 2015 8:37:13 AM"}
+{"from":"AUD","to":"CAD","rate":0.988134,"date":"Jan 16, 2015 8:37:14 AM"}
+{"from":"AUD","to":"NZD","rate":1.05375,"date":"Jan 16, 2015 8:37:14 AM"}
+{"from":"CHF","to":"AUD","rate":1.39545,"date":"Jan 16, 2015 8:37:14 AM"}
+{"from":"CHF","to":"EUR","rate":0.988434,"date":"Jan 16, 2015 8:37:14 AM"}
+{"from":"CHF","to":"GBP","rate":0.75528,"date":"Jan 16, 2015 8:37:15 AM"}
+{"from":"CHF","to":"USD","rate":1.14623,"date":"Jan 16, 2015 8:37:15 AM"}
+{"from":"CHF","to":"CAD","rate":1.37855,"date":"Jan 16, 2015 8:37:15 AM"}
+{"from":"CHF","to":"NZD","rate":1.47054,"date":"Jan 16, 2015 8:37:16 AM"}
+{"from":"EUR","to":"AUD","rate":1.41324,"date":"Jan 16, 2015 8:37:16 AM"}
+{"from":"EUR","to":"CHF","rate":1.01189,"date":"Jan 16, 2015 8:37:16 AM"}
+{"from":"EUR","to":"GBP","rate":0.764352,"date":"Jan 16, 2015 8:37:17 AM"}
+{"from":"EUR","to":"USD","rate":1.15909,"date":"Jan 16, 2015 8:37:17 AM"}
+{"from":"EUR","to":"CAD","rate":1.39472,"date":"Jan 16, 2015 8:37:17 AM"}
+{"from":"EUR","to":"NZD","rate":1.48734,"date":"Jan 16, 2015 8:37:18 AM"}
+{"from":"GBP","to":"AUD","rate":1.84917,"date":"Jan 16, 2015 8:37:18 AM"}
+{"from":"GBP","to":"CHF","rate":1.32415,"date":"Jan 16, 2015 8:37:18 AM"}
+{"from":"GBP","to":"EUR","rate":1.30856,"date":"Jan 16, 2015 8:37:19 AM"}
+{"from":"GBP","to":"USD","rate":1.51721,"date":"Jan 16, 2015 8:37:19 AM"}
+{"from":"GBP","to":"CAD","rate":1.82552,"date":"Jan 16, 2015 8:37:19 AM"}
+{"from":"GBP","to":"NZD","rate":1.94704,"date":"Jan 16, 2015 8:37:20 AM"}
+{"from":"USD","to":"AUD","rate":1.21836,"date":"Jan 16, 2015 8:37:20 AM"}
+{"from":"USD","to":"CHF","rate":0.87276,"date":"Jan 16, 2015 8:37:20 AM"}
+{"from":"USD","to":"EUR","rate":0.862745,"date":"Jan 16, 2015 8:37:21 AM"}
+{"from":"USD","to":"GBP","rate":0.659147,"date":"Jan 16, 2015 8:37:21 AM"}
+{"from":"USD","to":"CAD","rate":1.20313,"date":"Jan 16, 2015 8:37:21 AM"}
+{"from":"USD","to":"NZD","rate":1.28227,"date":"Jan 16, 2015 8:37:22 AM"}
+{"from":"CAD","to":"AUD","rate":1.01303,"date":"Jan 16, 2015 8:37:22 AM"}
+{"from":"CAD","to":"CHF","rate":0.725398,"date":"Jan 16, 2015 8:37:22 AM"}
+{"from":"CAD","to":"EUR","rate":0.717133,"date":"Jan 16, 2015 8:37:22 AM"}
+{"from":"CAD","to":"GBP","rate":0.547877,"date":"Jan 16, 2015 8:37:23 AM"}
+{"from":"CAD","to":"USD","rate":0.83137,"date":"Jan 16, 2015 8:37:23 AM"}
+{"from":"CAD","to":"NZD","rate":1.06674,"date":"Jan 16, 2015 8:37:23 AM"}
+{"from":"NZD","to":"AUD","rate":0.949147,"date":"Jan 16, 2015 8:37:24 AM"}
+{"from":"NZD","to":"CHF","rate":0.680011,"date":"Jan 16, 2015 8:37:24 AM"}
+{"from":"NZD","to":"EUR","rate":0.671988,"date":"Jan 16, 2015 8:37:24 AM"}
+{"from":"NZD","to":"GBP","rate":0.513599,"date":"Jan 16, 2015 8:37:25 AM"}
+{"from":"NZD","to":"USD","rate":0.779206,"date":"Jan 16, 2015 8:37:25 AM"}
+{"from":"NZD","to":"CAD","rate":0.937432,"date":"Jan 16, 2015 8:37:25 AM"}

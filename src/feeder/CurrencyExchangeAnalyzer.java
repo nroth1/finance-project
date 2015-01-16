@@ -67,6 +67,7 @@ public class CurrencyExchangeAnalyzer {
             BufferedReader reader = new BufferedReader(new FileReader(file_));
             String line = null;
             while ((line = reader.readLine()) != null) {
+                // TODO: Don't really like the line starts with thing, there should be a better way
                 if (line.startsWith("{")) {
                     Gson gson = new Gson();
                     ExchangeRate newExchangeRate = gson.fromJson(line, ExchangeRate.class);
@@ -98,6 +99,8 @@ public class CurrencyExchangeAnalyzer {
 
         // Create a list of exchange rates that we still have to analyze and aggregate
         Set<ExchangeRate> exchangeRatesToAggregate = new HashSet<ExchangeRate>();
+
+        System.out.println(analyzedData);
 
         // For every exchange rate in raw data, if we haven't aggregated the analysis, aggregate the analysis
         for (ExchangeRate exchangeRate : _exchangeRates) {
@@ -155,7 +158,7 @@ public class CurrencyExchangeAnalyzer {
                 if ((exchangeRate.date.compareTo(aggregation._startDate) > 0)
                         && (exchangeRate.date.compareTo(aggregation._endDate) <= 0)) {
                     exchangeRatesToAnalyze.add(exchangeRate);
-                    // TODO: Super messy and innefficient
+                    // TODO: messy and innefficient
                     seenExchangeRates.add(exchangeRate);
                 }
             }
@@ -217,9 +220,10 @@ public class CurrencyExchangeAnalyzer {
 
         File dir = new File("./Currency-Exchange/Analysis-Aggregates");
 
-        FileFilter textFileFilter_ = new WildcardFileFilter("Aggregated-Analysis*");
+        FileFilter textFileFilter_ = new WildcardFileFilter("Analysis-Aggregates*");
 
         File[] textFiles = dir.listFiles(textFileFilter_);
+
         analyzedData.addAll(getDatesFrom(textFiles));
         return analyzedData;
     }
@@ -246,8 +250,10 @@ public class CurrencyExchangeAnalyzer {
                         Gson gson = new Gson();
                         AggregatedExchangeRateAnalysis aggregatedExchangeRates = gson.fromJson(line,
                                 AggregatedExchangeRateAnalysis.class);
-                        // for (ExchangeRate exchangeRate : aggregatedExchangeRates._exchangeRates) {
-                        // dates.add(exchangeRate.date);
+                        // TODO: Add all of the dates of the analyzed exchange rates
+                        // for (AnalyzedExchangeRate analyzedExchangeRate :
+                        // aggregatedExchangeRates._analyzedExchangeRates) {
+                        // dates.addAll(analyzedExchangeRate.getAllDates());
                         // }
                     }
                 }

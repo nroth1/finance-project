@@ -153,6 +153,20 @@ public class AggregatedExchangeRateAnalysis {
             _aggregateDailyPercentIncrease = aggregateDailyPercentIncrease_;
             _percentOfDailyIncreases = percentOfDailyIncreases_;
         }
+
+        /**
+         * 
+         * @return
+         */
+        public List<Date> getAllDates() {
+            List<Date> dates = new ArrayList<Date>();
+            for (String s : _datesOfExchanges.keySet()) {
+                for (Date d : _datesOfExchanges.get(s)) {
+                    dates.add(d);
+                }
+            }
+            return dates;
+        }
     }
 
 }
